@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Geometry module types -->
+    <string-array name="module_types">
+        <item>Básico</item>
+        <item>Intermediário</item>
+        <item>Avançado</item>
+    </string-array>
+    
+    <!-- Geometry types -->
+    <string-array name="geometry_types_basic">
+        <item>Cubo</item>
+        <item>Esfera</item>
+        <item>Cilindro</item>
+        <item>Quadrado</item>
+        <item>Círculo</item>
+        <item>Triângulo</item>
+    </string-array>
+    
+    <string-array name="geometry_types_intermediate">
+        <item>Cone</item>
+        <item>Pirâmide</item>
+    </string-array>
+    
+    <string-array name="geometry_types_advanced">
+        <item>Em breve...</item>
+    </string-array>
+    
+    <!-- Geometry colors -->
+    <color name="geometry_cube_color">#F44336</color>
+    <color name="geometry_sphere_color">#4CAF50</color>
+    <color name="geometry_cylinder_color">#2196F3</color>
+    <color name="geometry_cone_color">#FF9800</color>
+    <color name="geometry_pyramid_color">#9C27B0</color>
+</resources>
+

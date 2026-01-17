@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GeoAR</string>
+    
+    <!-- Main Activity -->
+    <string name="welcome_title">Bem-vindo ao GeoAR</string>
+    <string name="welcome_subtitle">Geometria em Realidade Aumentada</string>
+    <string name="start_ar">Iniciar AR</string>
+    <string name="select_geometry">Selecionar Forma</string>
+    
+    <!-- AR Activity -->
+    <string name="ar_title">Mode AR Ativo</string>
+    <string name="scan_surface">Escaneie uma superfície plana</string>
+    <string name="surface_detected">Superfície detectada! Toque para colocar objeto</string>
+    <string name="placement_mode">Toque na tela para posicionar</string>
+    
+    <!-- Geometry Types -->
+    <string name="cube">Cubo</string>
+    <string name="sphere">Esfera</string>
+    <string name="cylinder">Cilindro</string>
+    <string name="cone">Cone</string>
+    <string name="pyramid">Pirâmide</string>
+    <string name="square">Quadrado</string>
+    <string name="circle">Círculo</string>
+    <string name="triangle">Triângulo</string>
+    
+    <!-- Educational Modules -->
+    <string name="module_basic">Módulo Básico</string>
+    <string name="module_intermediate">Módulo Intermediário</string>
+    <string name="module_advanced">Módulo Avançado</string>
+    
+    <string name="learn_area">Aprender Área</string>
+    <string name="learn_volume">Aprender Volume</string>
+    <string name="learn_perimeter">Aprender Perímetro</string>
+    
+    <!-- Actions -->
+    <string name="reset">Resetar</string>
+    <string name="delete">Deletar</string>
+    <string name="adjust">Ajustar</string>
+    <string name="info">Informações</string>
+    
+    <!-- Progress -->
+    <string name="progress">Progresso</string>
+    <string name="level">Nível</string>
+    <string name="achievements">Conquistas</string>
+    
+    <!-- Errors -->
+    <string name="error_arcore_not_available">ARCore não está disponível neste dispositivo</string>
+    <string name="error_arcore_install">Instale o ARCore para continuar</string>
+    <string name="error_no_camera">Câmera não disponível</string>
+</resources>
+
