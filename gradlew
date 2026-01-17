@@ -1,43 +1,163 @@
 #!/bin/sh
 
-# GeoAR - Gradle Wrapper Script
-# This script is simplified. For full functionality, use Android Studio.
+##############################################################################
+##
+##  Gradle start up script for UN*X
+##
+##############################################################################
 
-APP_HOME="$(cd -P -- "$(dirname -- "$0")" >/dev/null && pwd -P)"
+# Attempt to set APP_HOME
+# Resolve links: $0 may be a link
+PRG="$0"
+# Need this for relative symlinks.
+while [ -h "$PRG" ] ; do
+    ls -ld "$PRG"
+    PRG=`readlink "$PRG"`
+done
+SAVED="`pwd`"
+cd "`dirname "$PRG"`/" >/dev/null
+APP_HOME="`pwd -P`"
+cd "$SAVED" >/dev/null
 
-echo "═══════════════════════════════════════"
-echo "  GeoAR - Gradle Wrapper"
-echo "═══════════════════════════════════════"
-echo ""
-echo "⚠️  IMPORTANTE: Use Android Studio para build completo"
-echo ""
-echo "Para testar a aplicação:"
-echo "1. Abra o projeto no Android Studio"
-echo "2. Aguarde a sincronização do Gradle"
-echo "3. Conecte um dispositivo ARCore compatível"
-echo "4. Clique em 'Run'"
-echo ""
-echo "═══════════════════════════════════════"
+APP_NAME="Gradle"
+APP_BASE_NAME=`basename "$0"`
 
-# Verificar se java está disponível
-if command -v java &> /dev/null; then
-    echo "✅ Java encontrado: $(java -version 2>&1 | head -n 1)"
+# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+
+# Use the maximum available, or set MAX_FD != -1 to use that value.
+MAX_FD="maximum"
+
+warn () {
+    echo "$*"
+}
+
+die () {
+    echo
+    echo "$*"
+    echo
+    exit 1
+}
+
+# OS specific support (must be 'true' or 'false').
+cygwin=false
+msys=false
+darwin=false
+nonstop=false
+case "`uname`" in
+  CYGWIN* )
+    cygwin=true
+    ;;
+  Darwin* )
+    darwin=true
+    ;;
+  MSYS* | MINGW* )
+    msys=true
+    ;;
+  NONSTOP* )
+    nonstop=true
+    ;;
+esac
+
+CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
+
+
+# Determine the Java command to use to start the JVM.
+if [ -n "$JAVA_HOME" ] ; then
+    if [ -x "$JAVA_HOME/jre/bin/java" ] ; then
+        # IBM's JDK on AIX uses strange locations for the executables
+        JAVACMD="$JAVA_HOME/jre/bin/java"
+    else
+        JAVACMD="$JAVA_HOME/bin/java"
+    fi
+    if [ ! -x "$JAVACMD" ] ; then
+        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
 else
-    echo "❌ Java não encontrado"
-    exit 1
+    JAVACMD="java"
+    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
 fi
 
-# Verificar se o wrapper jar existe
-if [ ! -f "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" ]; then
-    echo "❌ gradle-wrapper.jar não encontrado"
-    echo "   Baixe de: https://services.gradle.org/distributions/gradle-wrapper.jar"
-    exit 1
+# Increase the maximum file descriptors if we can.
+if [ "$cygwin" = "false" -a "$darwin" = "false" -a "$nonstop" = "false" ] ; then
+    MAX_FD_LIMIT=`ulimit -H -n`
+    if [ $? -eq 0 ] ; then
+        if [ "$MAX_FD" = "maximum" -o "$MAX_FD" = "max" ] ; then
+            MAX_FD="$MAX_FD_LIMIT"
+        fi
+        ulimit -n $MAX_FD
+        if [ $? -ne 0 ] ; then
+            warn "Could not set maximum file descriptor limit: $MAX_FD"
+        fi
+    else
+        warn "Could not query maximum file descriptor limit: $MAX_FD_LIMIT"
+    fi
 fi
 
-echo ""
-echo "✅ Gradle wrapper configurado"
-echo ""
-echo "Para instalação manual do Gradle:"
-echo "  sudo apt install gradle  # Linux"
-echo ""
-echo "Ou use Android Studio (Recomendado)"
+# For Darwin, add options to specify how the application appears in the dock
+if $darwin; then
+    GRADLE_OPTS="$GRADLE_OPTS \"-Xdock:name=$APP_NAME\" \"-Xdock:icon=$APP_HOME/media/gradle.icns\""
+fi
+
+# For Cygwin or MSYS, switch paths to Windows format before running java
+if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
+    APP_HOME=`cygpath --path --mixed "$APP_HOME"`
+    CLASSPATH=`cygpath --path --mixed "$CLASSPATH"`
+
+    JAVACMD=`cygpath --unix "$JAVACMD"`
+
+    # We build the pattern for arguments to be converted via cygpath
+    ROOTDIRSRAW=`find -L / -maxdepth 3 -type d -name sources$ 2>/dev/null`
+    SEP=""
+    for dir in $ROOTDIRSRAW ; do
+        ROOTDIRS="$ROOTDIRS$SEP$dir"
+        SEP="|"
+    done
+    OURCYGPATTERN="(^($ROOTDIRS)$)"
+    OURCYGPATTERN="$OURCYGPATTERN|(^)([^\\/]*)(.*)$"
+    CLASSPATH=`cygpath --path --mixed "$CLASSPATH"`
+
+    JAVACMD=`cygpath --unix "$JAVACMD"`
+
+    # We build the pattern for arguments to be converted via cygpath
+    ROOTDIRSRAW=`find -L / -maxdepth 3 -type d -name sources$ 2>/dev/null`
+    SEP=""
+    for dir in $ROOTDIRSRAW ; do
+        ROOTDIRS="$ROOTDIRS$SEP$dir"
+        SEP="|"
+    done
+    OURCYGPATTERN="(^($ROOTDIRS)$)"
+    OURCYGPATTERN="$OURCYGPATTERN|(^)([^\\/]*)(.*)$"
+    # Add a user-defined pattern to the cygpath arguments
+    if [ "$GRADLE_CYGWIN_MATCH" != "" ] ; then
+        OURCYGPATTERN="$OURCYGPATTERN|($GRADLE_CYGWIN_MATCH)"
+    fi
+    # Now convert the arguments - kludge to limit ourselves to /bin/sh
+    i=0
+    for arg in "$@" ; do
+        CHECK=`echo "$arg"|egrep -c "$OURCYGPATTERN" -`
+        CHECK2=`echo "$arg"|egrep -c "^-"`                                 ### Determine if an option
+
+        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added a condition
+            arg=`cygpath --path --ignore --mixed "$arg"`
+        fi
+        CLASSPATH="$CLASSPATH:$arg"
+    done
+
+    # Combine all arguments for passing to the java command
+    eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS "\"-Dorg.gradle.appname=$APP_BASE_NAME\"" -classpath "\"$CLASSPATH\"" org.gradle.wrapper.GradleWrapperMain "$@"
+
+    exec "$JAVACMD" "$@"
+
+else
+    # Combine all arguments for passing to the java command
+    eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS "\"-Dorg.gradle.appname=$APP_BASE_NAME\"" -classpath "\"$CLASSPATH\"" org.gradle.wrapper.GradleWrapperMain "$@"
+
+    exec "$JAVACMD" "$@"
+fi
